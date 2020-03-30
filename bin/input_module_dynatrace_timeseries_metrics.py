@@ -29,7 +29,7 @@ def validate_input(helper, definition):
     pass
 
 def collect_events(helper, ew):
-    
+    ''' Updated for Splunk 8 ''' 
     '''SSL Verification'''
     
     
@@ -174,34 +174,34 @@ def collect_events(helper, ew):
     '''
     
     for i in service_metrics_avg:
-		parameters['aggregationType'] = AVERAGE 
-		parameters['timeseriesId'] = i 
-		send_data()
+        parameters['aggregationType'] = AVERAGE 
+        parameters['timeseriesId'] = i 
+        send_data()
     
     for i in service_metrics_count:
-		parameters['aggregationType'] = COUNT
-		parameters['timeseriesId'] = i
-		send_data()
+        parameters['aggregationType'] = COUNT
+        parameters['timeseriesId'] = i
+        send_data()
     
     for i in host_metrics:
-    	parameters['timeseriesId'] = i
-    	parameters['aggregationType'] = AVERAGE
-    	send_data()
+        parameters['timeseriesId'] = i
+        parameters['aggregationType'] = AVERAGE
+        send_data()
     
     for i in process_metrics:
-    	parameters['timeseriesId'] = i
-    	parameters['aggregationType'] = AVERAGE
-    	send_data()
+        parameters['timeseriesId'] = i
+        parameters['aggregationType'] = AVERAGE
+        send_data()
     
     for i in synthetic_metrics:
-    	parameters['timeseriesId'] = i
-    	if i == 'com.dynatrace.builtin:webcheck.availability':
-    		#url = build_url(opt_dynatrace_tenant, params, i, opt_dynatrace_api_token)
-    		del parameters['aggregationType']
-    		send_data("no aggregate values")
-    	else:
-    		parameters['aggregationType'] = AVERAGE
-    		send_data()
+        parameters['timeseriesId'] = i
+        if i == 'com.dynatrace.builtin:webcheck.availability':
+            #url = build_url(opt_dynatrace_tenant, params, i, opt_dynatrace_api_token)
+            del parameters['aggregationType']
+            send_data("no aggregate values")
+        else:
+            parameters['aggregationType'] = AVERAGE
+            send_data()
     
     #   Save the name of the Dynatrace Server that this data came from
     event = helper.new_event(data='{"dynatrace_server":"' + opt_dynatrace_tenant + '"}', time=hecTime, host=None, index=None, source=None, sourcetype=None, done=True, unbroken=True)
