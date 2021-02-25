@@ -46,12 +46,8 @@ class ModInputdynatrace_timeseries_metrics(modinput_wrapper.base_modinput.BaseMo
         For customized inputs, hard code the arguments here to hide argument detail from users.
         For other input types, arguments should be get from input_module. Defining new input types could be easier.
         """
-        scheme.add_argument(smi.Argument("dynatrace_tenant", title="Dynatrace Tenant",
-                                         description="If you are using Dynatrace Managed, include the environment ID: https://<tenant>/e/<environment>. Add-on forces mandatory HTTPS",
-                                         required_on_create=True,
-                                         required_on_edit=False))
-        scheme.add_argument(smi.Argument("dynatrace_api_token", title="Dynatrace API Token",
-                                         description="https://www.dynatrace.com/support/help/dynatrace-api/",
+        scheme.add_argument(smi.Argument("dynatrace_account", title="Dynatrace Account",
+                                         description="",
                                          required_on_create=True,
                                          required_on_edit=False))
         scheme.add_argument(smi.Argument("dynatrace_collection_interval", title="Dynatrace Collection Interval",
@@ -77,6 +73,7 @@ class ModInputdynatrace_timeseries_metrics(modinput_wrapper.base_modinput.BaseMo
 
     def get_account_fields(self):
         account_fields = []
+        account_fields.append("dynatrace_account")
         return account_fields
 
     def get_checkbox_fields(self):

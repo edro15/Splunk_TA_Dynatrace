@@ -34,7 +34,8 @@ def collect_events(helper, ew):
     '''
     Force HTTPS
     '''
-    dynatrace_tenant_input = helper.get_arg('dynatrace_tenant')
+    dynatrace_account_input = helper.get_arg("dynatrace_account")
+    dynatrace_tenant_input = dynatrace_account_input["username"]
     
     if dynatrace_tenant_input.find('https://') == 0:
         opt_dynatrace_tenant = dynatrace_tenant_input
@@ -45,12 +46,13 @@ def collect_events(helper, ew):
     '''
     '''
     
-    opt_dynatrace_api_token = helper.get_arg('dynatrace_api_token')
+    opt_dynatrace_api_token = dynatrace_account_input["password"]
     opt_dynatrace_collection_interval = helper.get_arg('dynatrace_collection_interval')
 
     headers     = {'Authorization': 'Api-Token {}'.format(opt_dynatrace_api_token),
                     'version':'Splunk TA 1.0.3'}
     api_url     = opt_dynatrace_tenant + '/api/v1/problem/feed' + '?relativeTime=' + opt_dynatrace_collection_interval    
+    # NOTE: problem_url not used anymore
     problem_url = opt_dynatrace_tenant + '/api/v1/problem/details/'
     
     #helper.log_debug("url: " + url)

@@ -24,16 +24,14 @@ from File” button.  Specify the location of the file you downloaded and
 install it.   
 
 ## Configuration
-The Dynatrace Add-on for Splunk utilizes a Dynatrace account URL and API authorization token.  Enter those values on 
-the **Create New Input** tab in the Add-on.
+The Dynatrace Add-on for Splunk utilizes a Dynatrace account URL and API authorization token.  Enter those values on the **Configuration / Account** tab in the add-on, after having clicked on **Add** button.
 
-From the Inputs menu, create new Input for the data you wish to collect.  
+Once done, navigate to the **Create New Input** tab in the Add-on. From the Inputs menu, create new Input for the data you wish to collect.  
 Each Input requires 4 parameters:
   - Input Name 
-  - Pollling interval
+  - Polling interval
   - Splunk Index to use
-  - Your Dynatrace tenant URL
-  - Your Dynatrace API Key
+  - Your Dynatrace account
   - The Timeseries Metrics Input collects a pre-defined set of Dynatrace 
 metrics
   

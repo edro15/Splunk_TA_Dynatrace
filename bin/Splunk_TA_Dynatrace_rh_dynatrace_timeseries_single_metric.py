@@ -34,25 +34,12 @@ fields = [
         )
     ), 
     field.RestField(
-        'dynatrace_tenant',
+        'dynatrace_account',
         required=True,
         encrypted=False,
-        default='https://<tenant>.live.dynatrace.com',
-        validator=validator.String(
-            min_len=0, 
-            max_len=8192, 
-        )
-    ), 
-    field.RestField(
-        'dynatrace_api_token',
-        required=True,
-        encrypted=True,
         default=None,
-        validator=validator.String(
-            min_len=0, 
-            max_len=8192, 
-        )
-    ), 
+        validator=None
+    ),
     field.RestField(
         'dynatrace_collection_interval',
         required=True,
